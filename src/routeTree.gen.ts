@@ -10,33 +10,53 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as CreaOmeroRouteImport } from './routes/crea-omero'
+import { Route as MenuRouteImport } from './routes/menu'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CreaOmeroRoute = CreaOmeroRouteImport.update({
+  id: '/crea-omero',
+  path: '/crea-omero',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MenuRoute = MenuRouteImport.update({
+  id: '/menu',
+  path: '/menu',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/crea-omero': typeof CreaOmeroRoute
+  '/menu': typeof MenuRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/crea-omero': typeof CreaOmeroRoute
+  '/menu': typeof MenuRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/crea-omero': typeof CreaOmeroRoute
+  '/menu': typeof MenuRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/crea-omero' | '/menu'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/crea-omero' | '/menu'
+  id: '__root__' | '/' | '/crea-omero' | '/menu'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  CreaOmeroRoute: typeof CreaOmeroRoute
+  MenuRoute: typeof MenuRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +68,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/crea-omero': {
+      id: '/crea-omero'
+      path: '/crea-omero'
+      fullPath: '/crea-omero'
+      preLoaderRoute: typeof CreaOmeroRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/menu': {
+      id: '/menu'
+      path: '/menu'
+      fullPath: '/menu'
+      preLoaderRoute: typeof MenuRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  CreaOmeroRoute: CreaOmeroRoute,
+  MenuRoute: MenuRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

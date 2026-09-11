@@ -10,11 +10,17 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as CreaOmeroRouteImport } from './routes/crea-omero'
 import { Route as MenuRouteImport } from './routes/menu'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CreaOmeroRoute = CreaOmeroRouteImport.update({
+  id: '/crea-omero',
+  path: '/crea-omero',
   getParentRoute: () => rootRouteImport,
 } as any)
 const MenuRoute = MenuRouteImport.update({
@@ -25,27 +31,31 @@ const MenuRoute = MenuRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/crea-omero': typeof CreaOmeroRoute
   '/menu': typeof MenuRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/crea-omero': typeof CreaOmeroRoute
   '/menu': typeof MenuRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/crea-omero': typeof CreaOmeroRoute
   '/menu': typeof MenuRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/menu'
+  fullPaths: '/' | '/crea-omero' | '/menu'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/menu'
-  id: '__root__' | '/' | '/menu'
+  to: '/' | '/crea-omero' | '/menu'
+  id: '__root__' | '/' | '/crea-omero' | '/menu'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  CreaOmeroRoute: typeof CreaOmeroRoute
   MenuRoute: typeof MenuRoute
 }
 
@@ -56,6 +66,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/crea-omero': {
+      id: '/crea-omero'
+      path: '/crea-omero'
+      fullPath: '/crea-omero'
+      preLoaderRoute: typeof CreaOmeroRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/menu': {
@@ -70,6 +87,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  CreaOmeroRoute: CreaOmeroRoute,
   MenuRoute: MenuRoute,
 }
 export const routeTree = rootRouteImport

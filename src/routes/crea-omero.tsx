@@ -114,7 +114,7 @@ function CreaOmero() {
   const kcal = chosen.reduce((sum, o) => sum + o.kcal, 0);
   const lv = level(kcal);
   const testo = steps
-    .map((s) => (sel[s.key]?.length ? `${s.title.replace(/^\d+\.\s/, "")}: ${sel[s.key].join(", ")}` : null))
+    .map((s) => (sel[s.key]?.length ? `${s.title.replace(/^\d+\.\s/, "")}: ${(sel[s.key] ?? []).join(", ")}` : null))
     .filter(Boolean)
     .join(" | ");
 

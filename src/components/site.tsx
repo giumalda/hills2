@@ -126,7 +126,7 @@ export function KrustyPopup() {
               className="mt-4 space-y-3"
               onSubmit={(e) => {
                 e.preventDefault();
-                setPrize(prizes[Math.floor(Math.random() * prizes.length)]);
+                setPrize(prizes[Math.floor(Math.random() * prizes.length)] ?? prizes[0]!);
               }}
             >
               <input

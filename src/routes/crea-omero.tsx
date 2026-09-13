@@ -109,7 +109,7 @@ function CreaOmero() {
   };
 
   const chosen = steps.flatMap((s) =>
-    (sel[s.key] ?? []).map((n) => s.options.find((o) => o.name === n)!),
+    (sel[s.key] ?? []).flatMap((n) => { const o = s.options.find((x) => x.name === n); return o ? [o] : []; }),
   );
   const kcal = chosen.reduce((sum, o) => sum + o.kcal, 0);
   const lv = level(kcal);

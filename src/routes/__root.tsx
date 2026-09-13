@@ -14,19 +14,19 @@ import { reportLovableError } from "../lib/lovable-error-reporting";
 
 function NotFoundComponent() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background px-4">
-      <div className="max-w-md text-center">
-        <h1 className="text-7xl font-bold text-foreground">404</h1>
-        <h2 className="mt-4 text-xl font-semibold text-foreground">Page not found</h2>
-        <p className="mt-2 text-sm text-muted-foreground">
-          The page you're looking for doesn't exist or has been moved.
-        </p>
+    <div className="flex min-h-screen items-center justify-center bg-sky px-4">
+      <div className="max-w-lg text-center">
+        <div className="text-7xl">👃</div>
+        <h1 className="mt-4 font-display text-4xl toon text-primary sm:text-6xl">
+          Sto aiutando!
+        </h1>
+        <p className="mt-4 font-semibold">Ma questa pagina non esiste... D'oh!</p>
         <div className="mt-6">
           <Link
-            to="/"
-            className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+            to="/menu"
+            className="toon-btn inline-flex items-center justify-center rounded-full bg-accent px-5 py-3 font-display text-2xl text-accent-foreground"
           >
-            Go home
+            Riportami al Menù, la fame si fa sentire!
           </Link>
         </div>
       </div>
@@ -77,21 +77,33 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "Hill's Burger & Chips by Antonio — Mottola (TA)" },
+      {
+        name: "description",
+        content:
+          "Hamburgheria a tema Simpson a Mottola (TA): oltre 40 panini, fritti, birre e il panino sfida Big Simpson.",
+      },
+      { name: "author", content: "Hill's Burger & Chips by Antonio" },
+      { property: "og:title", content: "Hill's Burger & Chips by Antonio — Mottola (TA)" },
+      {
+        property: "og:description",
+        content: "Il vero gusto che fa sbavare Homer. Prenotazione obbligatoria: 333 296 8401.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:site", content: "@Lovable" },
     ],
     links: [
       {
         rel: "stylesheet",
         href: appCss,
       },
-      { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+      { rel: "icon", type: "image/png", href: "/favicon.png" },
+      { rel: "preconnect", href: "https://fonts.googleapis.com" },
+      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
+      {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css2?family=Bangers&family=Montserrat:wght@400;600;700;900&display=swap",
+      },
     ],
   }),
   shellComponent: RootShell,

@@ -222,9 +222,9 @@ function Home() {
           ⭐️⭐️⭐️⭐️⭐️ 4,6 / 5 — basato su 493 recensioni Google
         </p>
         <div className="toon-box mx-auto mt-8 max-w-2xl rounded-2xl bg-card p-6">
-          <p className="text-lg">"{reviews[slide].text}"</p>
+          <p className="text-lg">"{reviews[slide]?.text}"</p>
           <p className="mt-4 font-display text-2xl">
-            {reviews[slide].name} — {"⭐".repeat(reviews[slide].stars)}
+            {reviews[slide]?.name} — {"⭐".repeat(reviews[slide]?.stars ?? 5)}
           </p>
           <div className="mt-5 flex justify-between gap-3">
             <button

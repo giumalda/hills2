@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as CreaOmeroRouteImport } from './routes/crea-omero'
+import { Route as FidelityRouteImport } from './routes/fidelity'
 import { Route as MenuRouteImport } from './routes/menu'
 
 const IndexRoute = IndexRouteImport.update({
@@ -23,6 +24,11 @@ const CreaOmeroRoute = CreaOmeroRouteImport.update({
   path: '/crea-omero',
   getParentRoute: () => rootRouteImport,
 } as any)
+const FidelityRoute = FidelityRouteImport.update({
+  id: '/fidelity',
+  path: '/fidelity',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const MenuRoute = MenuRouteImport.update({
   id: '/menu',
   path: '/menu',
@@ -32,30 +38,34 @@ const MenuRoute = MenuRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/crea-omero': typeof CreaOmeroRoute
+  '/fidelity': typeof FidelityRoute
   '/menu': typeof MenuRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/crea-omero': typeof CreaOmeroRoute
+  '/fidelity': typeof FidelityRoute
   '/menu': typeof MenuRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/crea-omero': typeof CreaOmeroRoute
+  '/fidelity': typeof FidelityRoute
   '/menu': typeof MenuRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/crea-omero' | '/menu'
+  fullPaths: '/' | '/crea-omero' | '/fidelity' | '/menu'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/crea-omero' | '/menu'
-  id: '__root__' | '/' | '/crea-omero' | '/menu'
+  to: '/' | '/crea-omero' | '/fidelity' | '/menu'
+  id: '__root__' | '/' | '/crea-omero' | '/fidelity' | '/menu'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   CreaOmeroRoute: typeof CreaOmeroRoute
+  FidelityRoute: typeof FidelityRoute
   MenuRoute: typeof MenuRoute
 }
 
@@ -75,6 +85,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CreaOmeroRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/fidelity': {
+      id: '/fidelity'
+      path: '/fidelity'
+      fullPath: '/fidelity'
+      preLoaderRoute: typeof FidelityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/menu': {
       id: '/menu'
       path: '/menu'
@@ -88,6 +105,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   CreaOmeroRoute: CreaOmeroRoute,
+  FidelityRoute: FidelityRoute,
   MenuRoute: MenuRoute,
 }
 export const routeTree = rootRouteImport

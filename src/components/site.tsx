@@ -235,10 +235,10 @@ export function KrustyPopup() {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-night/70 p-4" role="dialog" aria-modal="true" aria-labelledby="krusty-title">
       <div className="toon-box relative max-h-[92vh] w-full max-w-md overflow-y-auto rounded-lg bg-card p-6 text-center">
-        <Button type="button" variant="ghost" size="icon" onClick={close} className="absolute right-2 top-2" aria-label="Chiudi">
+        <Button type="button" variant="ghost" size="icon" onClick={close} className="absolute right-2 top-2 z-10" aria-label="Chiudi">
           <X aria-hidden="true" />
         </Button>
-        <div className="bounce-slow mx-auto mb-2 text-5xl">🎡</div>
+        <div className="bounce-slow pointer-events-none mx-auto mb-2 text-5xl">🎡</div>
         <h2 className="toon-sm text-3xl text-primary">Ehi, ehi, ragazzi!</h2>
         <h3 id="krusty-title" className="text-xl">Gira la ruota di Krusty!</h3>
         {prize ? (

@@ -1,15 +1,12 @@
 import { Link } from "@tanstack/react-router";
 import { Gift, LogIn, LogOut, X } from "lucide-react";
 import { useEffect, useState } from "react";
-import type { User } from "@supabase/supabase-js";
 
 import logo from "@/assets/logo.png.asset.json";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
 import { WHATSAPP, PHONE, allergeni } from "@/data/menu";
-import { lovable } from "@/integrations/lovable";
-import { supabase } from "@/integrations/supabase/client";
 
 const ALT_LOGO = "Logo verde e bianco Hill’s Burger & Chips a forma di panino con un morso.";
 

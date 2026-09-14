@@ -124,14 +124,23 @@ export function KrustyPopup() {
   useEffect(() => {
     if (!user) {
       setPrize(null);
+      setConsent(false);
       return;
     }
-    supabase
-      .from("wheel_wins")
-      .select("prize_name, prize_description, redemption_code, status, expires_at")
-      .eq("campaign_key", "krusty-2026")
-      .maybeSingle()
-      .then(({ data }) => setPrize(data));
+    Promise.all([
+      supabase
+        .from("wheel_wins")
+        .select("prize_name, prize_description, redemption_code, status, expires_at")
+        .eq("campaign_key", "krusty-2026")
+        .maybeSingle(),
+      supabase
+        .from("marketing_preferences")
+        .select("promotions_consent")
+        .maybeSingle(),
+    ]).then(([winResult, preferenceResult]) => {
+      setPrize(winResult.data);
+      setConsent(preferenceResult.data?.promotions_consent ?? false);
+    });
   }, [user]);
 
   const close = () => setOpen(false);
@@ -195,6 +204,22 @@ export function KrustyPopup() {
     setMessage(win.already_drawn ? "Ecco il premio già associato al tuo account." : "D’oh sì! Premio assegnato e salvato.");
   };
 
+  const saveConsent = async () => {
+    if (!user?.email) return;
+    setLoading(true);
+    setMessage(null);
+    const now = new Date().toISOString();
+    const { error } = await supabase.from("marketing_preferences").upsert({
+      user_id: user.id,
+      email: user.email.toLowerCase(),
+      promotions_consent: consent,
+      consented_at: consent ? now : null,
+      revoked_at: consent ? null : now,
+    });
+    setLoading(false);
+    setMessage(error ? error.message : consent ? "Consenso promozionale salvato." : "Consenso promozionale revocato.");
+  };
+
   if (!open) {
     return (
       <Button
@@ -227,6 +252,13 @@ export function KrustyPopup() {
             <p className="mt-3 text-xs text-muted-foreground">
               Valido fino al {new Intl.DateTimeFormat("it-IT", { dateStyle: "long" }).format(new Date(prize.expires_at))}. Mostra il codice in cassa.
             </p>
+            <label className="mt-4 flex items-start gap-3 rounded-md border border-border p-3 text-left text-sm" htmlFor="saved-krusty-consent">
+              <Checkbox id="saved-krusty-consent" checked={consent} onCheckedChange={(checked) => setConsent(checked === true)} className="mt-0.5" />
+              <span>Desidero ricevere via email promozioni e novità di Hill’s.</span>
+            </label>
+            <Button type="button" variant="outline" disabled={loading} onClick={() => void saveConsent()} className="mt-3 w-full">
+              Salva preferenza email
+            </Button>
           </div>
         ) : !user ? (
           <div className="mt-4 text-left">

@@ -40,7 +40,7 @@
 }
 
 :root {
-  --radius: 0.75rem;
+  --radius: 0.5rem;
   /* Giallo Springfield */
   --primary: oklch(0.885 0.178 96.5);
   --primary-foreground: oklch(0.22 0.02 265);
@@ -56,7 +56,7 @@
   --donut: oklch(0.72 0.19 350);
 
   --background: oklch(0.99 0.012 95);
-  --foreground: oklch(0.28 0.005 265);
+  --foreground: oklch(0.2 0.01 265);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.28 0.005 265);
   --popover: oklch(1 0 0);
@@ -64,7 +64,7 @@
   --secondary: oklch(0.96 0.02 95);
   --secondary-foreground: oklch(0.28 0.005 265);
   --muted: oklch(0.95 0.01 95);
-  --muted-foreground: oklch(0.5 0.02 265);
+  --muted-foreground: oklch(0.36 0.025 265);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(1 0 0);
   --border: oklch(0.28 0.005 265);
@@ -77,13 +77,17 @@
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-sans);
+    font-size: 1rem;
+    line-height: 1.65;
+    text-rendering: optimizeLegibility;
   }
 
   h1,
   h2,
   h3 {
     font-family: var(--font-display);
-    letter-spacing: 0.02em;
+    letter-spacing: 0;
+    line-height: 1.1;
   }
 }
 
@@ -101,19 +105,19 @@
 
 /* Bordo spesso cartoon con ombra piena */
 @utility toon-box {
-  border: 3px solid oklch(0.15 0 0);
-  box-shadow: 6px 6px 0 0 oklch(0.15 0 0);
+  border: 2px solid oklch(0.15 0 0);
+  box-shadow: 4px 4px 0 0 oklch(0.15 0 0);
 }
 
 @utility toon-btn {
-  border: 3px solid oklch(0.15 0 0);
-  box-shadow: 4px 4px 0 0 oklch(0.15 0 0);
+  border: 2px solid oklch(0.15 0 0);
+  box-shadow: 3px 3px 0 0 oklch(0.15 0 0);
   transition:
     transform 0.12s ease,
     box-shadow 0.12s ease;
   &:hover {
     transform: translate(-2px, -2px) scale(1.03);
-    box-shadow: 6px 6px 0 0 oklch(0.15 0 0);
+    box-shadow: 5px 5px 0 0 oklch(0.15 0 0);
   }
   &:active {
     transform: translate(2px, 2px);

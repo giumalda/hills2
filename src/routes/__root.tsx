@@ -7,19 +7,20 @@ import {
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
-import { type ReactNode } from "react";
+import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
+import { reportLovableError } from "../lib/lovable-error-reporting";
 
 function NotFoundComponent() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-sky px-4">
       <div className="max-w-lg text-center">
-        <div className="text-7xl">❕</div>
+        <div className="text-7xl">👃</div>
         <h1 className="mt-4 font-display text-4xl toon text-primary sm:text-6xl">
-          ERRORE!
+          Sto aiutando!
         </h1>
-        <p className="mt-4 font-semibold">Questa pagina non esiste...</p>
+        <p className="mt-4 font-semibold">Ma questa pagina non esiste... D'oh!</p>
         <div className="mt-6">
           <Link
             to="/menu"
@@ -36,6 +37,9 @@ function NotFoundComponent() {
 function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   console.error(error);
   const router = useRouter();
+  useEffect(() => {
+    reportLovableError(error, { boundary: "tanstack_root_error_component" });
+  }, [error]);
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">

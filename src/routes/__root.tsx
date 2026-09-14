@@ -16,11 +16,11 @@ function NotFoundComponent() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-sky px-4">
       <div className="max-w-lg text-center">
-        <div className="text-7xl">👃</div>
+        <div className="text-7xl">❕</div>
         <h1 className="mt-4 font-display text-4xl toon text-primary sm:text-6xl">
-          Sto aiutando!
+          ERRORE!
         </h1>
-        <p className="mt-4 font-semibold">Ma questa pagina non esiste... D'oh!</p>
+        <p className="mt-4 font-semibold">Questa pagina non esiste...</p>
         <div className="mt-6">
           <Link
             to="/menu"

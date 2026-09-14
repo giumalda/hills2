@@ -7,7 +7,7 @@ import { WHATSAPP, PHONE, allergeni } from "@/data/menu";
 const navItems = [
   { to: "/", label: "Home", icon: "🏠" },
   { to: "/menu", label: "Menù", icon: "🍔" },
-  { to: "/crea-omero", label: "Crea l'Omero", icon: "🛠️" },
+  { to: "/crea-omero", label: "Crea il tuo hamburger", mobileLabel: "Crea", icon: "🛠️" },
   { to: "/fidelity", label: "Fidelity", icon: "⭐" },
 ] as const;
 
@@ -52,7 +52,7 @@ export function TabBar() {
               activeProps={{ className: "bg-night text-primary" }}
             >
               <span className="text-lg">{item.icon}</span>
-              {item.label}
+               {"mobileLabel" in item ? item.mobileLabel : item.label}
             </Link>
           </li>
         ))}
@@ -126,7 +126,7 @@ export function KrustyPopup() {
               className="mt-4 space-y-3"
               onSubmit={(e) => {
                 e.preventDefault();
-                setPrize(prizes[Math.floor(Math.random() * prizes.length)] ?? prizes[0]!);
+                 setPrize(prizes[Math.floor(Math.random() * prizes.length)] ?? "Una bibita in regalo! 🥤");
               }}
             >
               <input
@@ -159,10 +159,10 @@ export function SiteFooter() {
   const [doh, setDoh] = useState(false);
 
   return (
-    <footer className="mt-16 border-t-[3px] border-foreground bg-night pb-24 text-white md:pb-10">
+    <footer className="mt-16 border-t-[3px] border-foreground bg-night pb-24 text-primary-foreground md:pb-10">
       <div className="mx-auto max-w-6xl px-4 py-10">
         <h2 className="toon-sm text-3xl text-primary">Hill's Burger & Chips by Antonio e Pina</h2>
-        <p className="mt-2 text-sm text-white/80">
+        <p className="mt-2 text-sm text-primary-foreground/90">
           Piazza Trieste, 35 — 74017 Mottola (TA)
           <br />
           Telefono e WhatsApp:{" "}
@@ -171,7 +171,7 @@ export function SiteFooter() {
           </a>
         </p>
 
-        <div className="mt-8 rounded-xl border-2 border-white/25 p-4">
+        <div className="mt-8 rounded-lg border-2 border-primary-foreground/40 p-4">
           <button
             onClick={() => setOpenAllergeni((v) => !v)}
             className="flex w-full items-center justify-between text-left font-bold"
@@ -181,7 +181,7 @@ export function SiteFooter() {
             <span>{openAllergeni ? "−" : "+"}</span>
           </button>
           {openAllergeni && (
-            <ul className="mt-3 list-disc space-y-1 pl-5 text-sm text-white/80">
+            <ul className="mt-3 list-disc space-y-1 pl-5 text-sm text-primary-foreground/90">
               {allergeni.map((a) => (
                 <li key={a}>{a}</li>
               ))}
@@ -203,7 +203,7 @@ export function SiteFooter() {
           </a>
         </div>
 
-        <div className="mt-8 flex items-center gap-3 text-xs text-white/60">
+        <div className="mt-8 flex items-center gap-3 text-xs text-primary-foreground/75">
           <button onClick={() => setDoh(true)} aria-label="Logo Hill's">
             <img src={logo.url} alt="Logo Hill's Burger & Chips" className="h-9 w-9 rounded" />
           </button>

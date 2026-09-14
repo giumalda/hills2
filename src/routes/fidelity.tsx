@@ -18,6 +18,8 @@ export const Route = createFileRoute("/fidelity")({
         property: "og:description",
         content: "Un donut in regalo ogni 5 panini: il programma fedeltà di Hill's Burger & Chips.",
       },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Fidelity,

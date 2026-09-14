@@ -17,6 +17,8 @@ export const Route = createFileRoute("/menu")({
         property: "og:description",
         content: "Panini, special burger, fritti e patatine: tutto il menù di Hill's Burger & Chips.",
       },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: MenuPage,
@@ -29,7 +31,7 @@ function MenuPage() {
         <div className="mx-auto max-w-4xl px-4 text-center">
           <h1 className="font-display text-4xl toon text-primary sm:text-6xl">Il Menù Completo</h1>
           <p className="mt-4 font-semibold">
-            Da "Krusty Burger" alla "Taverna di Boe": tutto quello che esce dalla nostra cucina.
+            Panini gourmet, croccante pollo in stile K giapponese e una selezione di birre per ogni gusto, inclusa l'analcolica della Taverna di Boe.
           </p>
         </div>
       </section>
@@ -63,17 +65,17 @@ function MenuPage() {
               {section.emoji} {section.title}
             </h2>
             {section.note && (
-              <p className="text-sm font-semibold text-muted-foreground">{section.note}</p>
+              <p className="text-base font-semibold text-foreground/80">{section.note}</p>
             )}
             <ul className="mt-4 space-y-3">
               {section.items.map((item) => (
                 <li
                   key={item.name}
-                  className={`toon-box rounded-xl p-4 ${
+                   className={`toon-box rounded-lg p-4 sm:p-5 ${
                     item.challenge ? "bg-accent text-accent-foreground" : "bg-card"
                   }`}
                 >
-                  <div className="flex items-baseline justify-between gap-4">
+                   <div className="flex items-start justify-between gap-4">
                     <h3 className="text-xl leading-tight">
                       {item.name}
                       {item.frozen && (
@@ -89,7 +91,7 @@ function MenuPage() {
                     </h3>
                     <span className="shrink-0 font-display text-xl">€ {item.price}</span>
                   </div>
-                  {item.desc && <p className="mt-1 text-sm">{item.desc}</p>}
+                   {item.desc && <p className="mt-2 text-[0.95rem] leading-relaxed text-foreground/85">{item.desc}</p>}
                 </li>
               ))}
             </ul>

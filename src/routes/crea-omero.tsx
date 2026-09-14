@@ -7,17 +7,19 @@ import { WHATSAPP } from "@/data/menu";
 export const Route = createFileRoute("/crea-omero")({
   head: () => ({
     meta: [
-      { title: "Crea l'Omero — costruisci il tuo panino | Hill's Burger" },
+      { title: "Crea il tuo hamburger | Hill's Burger" },
       {
         name: "description",
         content:
           "Scegli pane, carne, formaggi, extra e salse e costruisci la tua torre di sapore. Supera il livello Espansione Cintura e sblocca il badge La Costina.",
       },
-      { property: "og:title", content: "Crea l'Omero — costruisci il tuo panino" },
+      { property: "og:title", content: "Crea il tuo hamburger | Hill's Burger" },
       {
         property: "og:description",
         content: "Il costruttore di panini di Hill's Burger & Chips a Mottola.",
       },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: CreaOmero,
@@ -122,7 +124,7 @@ function CreaOmero() {
     <PageShell>
       <section className="bg-accent py-10 text-accent-foreground">
         <div className="mx-auto max-w-4xl px-4 text-center">
-          <h1 className="font-display text-4xl toon-sm sm:text-6xl">Crea l'Omero</h1>
+          <h1 className="font-display text-4xl toon-sm sm:text-6xl">Crea il tuo hamburger</h1>
           <p className="mt-3 font-semibold">
             Scegli il pane, la carne, le salse e costruisci la tua torre di puro sapore.
           </p>

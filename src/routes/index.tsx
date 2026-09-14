@@ -2,9 +2,9 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 
 import { KrustyPopup, PageShell } from "@/components/site";
-import burgerBig from "@/assets/burger-big.png.asset.json";
-import antonio from "@/assets/antonio.png.asset.json";
-import burgerBattle from "@/assets/burger-battle.png.asset.json";
+import burgerBig from "@/assets/burger-big-hd.jpg";
+import antonio from "@/assets/antonio-hd.jpg";
+import bigSimpson from "@/assets/big-simpson-hd.jpg";
 import { reviews, WHATSAPP, PHONE } from "@/data/menu";
 
 export const Route = createFileRoute("/")({
@@ -22,13 +22,15 @@ export const Route = createFileRoute("/")({
         content:
           "Il vero gusto che fa sbavare Homer: oltre 40 panini, fritti e birre a Mottola. Prenotazione obbligatoria.",
       },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Home,
 });
 
 function Chalkboard() {
-  const line = "Non metterò il ketchup nel panino gourmet. Non chiederò una birra analcolica da Boe. ";
+  const line = "Non metterò il ketchup nel panino gourmet. Ordinerò una birra analcolica alla Taverna di Boe. ";
   const [n, setN] = useState(0);
   useEffect(() => {
     const id = window.setInterval(() => setN((v) => (v + 1) % (line.length * 2)), 70);
@@ -57,7 +59,7 @@ const servizi = [
   "Consumazione sul posto, asporto e servizio al tavolo",
   "Tavoli all'aperto e ampia sala interna",
   "Toilette disponibile",
-  "Vasta selezione di birre, alcolici, superalcolici, vino, caffè; assaggi e pasti serviti fino a tarda sera",
+  "Selezione di birre classiche, artigianali e analcoliche, oltre a vino, caffè e distillati",
   "Locale adatto ai bambini: menu dedicati, seggioloni, ideale per feste di compleanno",
   "Accessibilità: tavoli accessibili in sedia a rotelle",
   "Animali ammessi: cani benvenuti!",
@@ -86,8 +88,8 @@ function Home() {
             Mitico! Il vero gusto che fa sbavare Homer.
           </h1>
           <p className="mx-auto mt-4 max-w-2xl font-semibold">
-            Da Antonio e Pina, la migliore Hamburgheria, Fast Food e Paninoteca. Preparati a
-            un'esperienza spaziale!
+            Panini gourmet, carni selezionate e pollo con croccante panatura stile K giapponese ai
+            cornflakes. Preparati a un'esperienza spaziale!
           </p>
           <div className="mt-6 flex flex-wrap justify-center gap-3">
             <Link
@@ -106,9 +108,11 @@ function Home() {
             </a>
           </div>
           <img
-            src={burgerBig.url}
+            src={burgerBig}
             alt="Panino gigante Hill's servito al tavolo"
-            className="toon-box mx-auto mt-10 w-full max-w-xl rounded-2xl object-cover"
+            width={1600}
+            height={1200}
+            className="toon-box mx-auto mt-10 aspect-[4/3] w-full max-w-xl rounded-lg object-cover"
           />
         </div>
       </section>
@@ -148,7 +152,7 @@ function Home() {
       <section className="mx-auto max-w-6xl space-y-6 px-4 pb-14">
         <div className="toon-box grid items-center gap-6 rounded-2xl bg-accent p-6 text-accent-foreground md:grid-cols-[1fr_auto]">
           <div>
-            <h3 className="text-3xl">Crea l'Omero!</h3>
+            <h3 className="text-3xl">Crea il tuo hamburger</h3>
             <p className="mt-2 font-semibold">
               Scegli il pane, la carne, le salse e costruisci la tua torre di puro sapore. Assembla
               gli ingredienti e, se superi il livello "Espansione Cintura", sblocchi il badge segreto
@@ -157,18 +161,18 @@ function Home() {
           </div>
           <Link
             to="/crea-omero"
-            className="toon-btn rounded-full bg-primary px-6 py-3 font-display text-2xl text-primary-foreground"
+             className="toon-btn rounded-full bg-primary px-6 py-3 font-display text-2xl text-primary-foreground"
           >
-            Inizia a Costruire
+             Inizia a creare
           </Link>
         </div>
 
         <div className="toon-box grid items-center gap-6 rounded-2xl bg-night p-6 text-white md:grid-cols-[auto_1fr]">
           <span className="text-6xl">☎️</span>
           <div>
-            <h3 className="text-3xl text-primary">Scontrini e scherzi da Boe</h3>
+            <h3 className="text-3xl text-primary">Scontrini e scherzi alla Taverna di Boe</h3>
             <p className="mt-2 font-semibold">
-              Fai uno scherzo a Boe! Nelle note dell'ordine inserisci un nome per la chiamata da fare
+              Fai uno scherzo alla Taverna di Boe! Nelle note dell'ordine inserisci un nome per la chiamata da fare
               al bancone (es. "Signorino Cioè"). Al ritiro, lo chiameremo a voce alta per far ridere
               tutta la sala!
             </p>
@@ -196,9 +200,12 @@ function Home() {
       <section className="bg-night py-14">
         <div className="mx-auto grid max-w-6xl gap-6 px-4 md:grid-cols-2">
           <img
-            src={antonio.url}
+            src={antonio}
             alt="Antonio, titolare di Hill's Burger & Chips, con un hamburger"
-            className="toon-box h-full w-full rounded-2xl object-cover"
+            loading="lazy"
+            width={1200}
+            height={1200}
+            className="toon-box aspect-square h-full w-full rounded-lg object-cover"
           />
           <div className="text-white">
             <h2 className="text-4xl text-primary">Big Simpson: la sfida</h2>
@@ -207,9 +214,12 @@ function Home() {
               insalata, pomodoro e contorno di patatine. Se lo mangi in 20 minuti non lo paghi!
             </p>
             <img
-              src={burgerBattle.url}
-              alt="Panino Hill's del Burger Battle su sfondo giallo"
-              className="toon-box mt-5 w-full max-w-xs rounded-2xl object-cover"
+               src={bigSimpson}
+               alt="Bozza fotografica del Big Simpson, il panino sfida di Hill's"
+               loading="lazy"
+               width={1600}
+               height={1200}
+               className="toon-box mt-5 aspect-[4/3] w-full max-w-md rounded-lg object-cover"
             />
           </div>
         </div>
@@ -221,9 +231,9 @@ function Home() {
         <p className="mt-2 text-center font-bold">
           ⭐️⭐️⭐️⭐️⭐️ 4,6 / 5 — basato su 493 recensioni Google
         </p>
-        <div className="toon-box mx-auto mt-8 max-w-2xl rounded-2xl bg-card p-6">
-          <p className="text-lg">"{reviews[slide]?.text}"</p>
-          <p className="mt-4 font-display text-2xl">
+         <div className="toon-box mx-auto mt-8 flex min-h-72 max-w-2xl flex-col rounded-lg bg-card p-6 sm:min-h-64 sm:p-8">
+           <blockquote className="flex-1 text-base leading-relaxed sm:text-lg">“{reviews[slide]?.text}”</blockquote>
+           <p className="mt-5 font-display text-2xl">
             {reviews[slide]?.name} — {"⭐".repeat(reviews[slide]?.stars ?? 5)}
           </p>
           <div className="mt-5 flex justify-between gap-3">

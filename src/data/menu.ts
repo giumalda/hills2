@@ -178,7 +178,7 @@ export const menu: MenuSection[] = [
       },
       {
         name: "Boy Szyslak",
-        desc: "Burger di pollo con panatura corn flakes, formaggio cheddar, insalata, pomodoro, ketch./maion.",
+        desc: "Burger di pollo con croccante panatura stile K giapponese ai cornflakes, formaggio cheddar, insalata, pomodoro, ketchup e maionese.",
         price: "10,00",
         frozen: true,
       },
@@ -286,7 +286,7 @@ export const menu: MenuSection[] = [
       },
       {
         name: "Joe Quimby",
-        desc: "Doppio burger di pollo con panatura corn flakes 200gr, doppio cheddar, doppio bacon, insalata, salsa hill's",
+        desc: "Doppio burger di pollo 200gr con croccante panatura stile K giapponese ai cornflakes, doppio cheddar, doppio bacon, insalata e salsa Hill's.",
         price: "20,00",
         frozen: true,
       },
@@ -495,42 +495,42 @@ export const menu: MenuSection[] = [
 
 export const reviews = [
   {
-    name: "Carmine Picaro",
+    name: "Carmine P.",
     stars: 5,
     text: "Ottima paninoteca! Hamburger davvero gustosi, preparati con ingredienti freschi e di qualità. Il pane era morbido, la carne cotta alla perfezione e le patatine …",
   },
   {
-    name: "Lucia Lippolis",
+    name: "Lucia L.",
     stars: 5,
     text: "Panini magnifici, grande opportunità di scelta in base ai propri gusti, ricchi e con prodotti di prima scelta. Persone gentilissime e professionali. Siamo …",
   },
   {
-    name: "Francesco Putino",
+    name: "Francesco P.",
     stars: 5,
     text: "Panini buonissimi e con una ampia scelta servizio ottimo, complimenti ai proprietari Antonio e Pina, tutto buonissimo …",
   },
   {
-    name: "Maria Albano",
+    name: "Maria A.",
     stars: 4,
     text: "Panini ottimi! Gli ingredienti sono molto buoni e c'è tantissima scelta. Il locale è a tema Simpson, infatti ogni panino ha un nome dei diversi personaggi del …",
   },
   {
-    name: "Giuseppina Semeraro",
+    name: "Giuseppina S.",
     stars: 5,
     text: "I panini di Antonio sono i più buoni nella zona. Antonio è una bravissima persona e fa dei panini super buonissimi. È assolutamente da provare. E nn lo lascerete più",
   },
   {
-    name: "Erol Longo",
+    name: "Erol L.",
     stars: 5,
     text: "Per un amante dei panini e della buona birra, stasera è stato come trovarsi nel paradiso terrestre ...40 e più tipi di panini da cui scegliere… …",
   },
   {
-    name: "Oh_perbacco Food&Wine",
+    name: "Oh_perbacco F.",
     stars: 5,
     text: "Vi è mai capitato di voler esagerare e sfidare le proprie capacità? Bene vi propongo un posto dove troverete quantità e qualità. Sto parlando di @hill_s_burger …",
   },
   {
-    name: "Antonio Mauriello",
+    name: "Antonio M.",
     stars: 5,
     text: "Un istituzione qualità fantasia hamburger di ogni tipo sapori unici hamburgheria in stile Americano con carni e prodotti locali! Il panino della sfida incredibile… …",
   },

@@ -14,13 +14,150 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      marketing_preferences: {
+        Row: {
+          consented_at: string | null
+          created_at: string
+          email: string
+          promotions_consent: boolean
+          revoked_at: string | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          consented_at?: string | null
+          created_at?: string
+          email: string
+          promotions_consent?: boolean
+          revoked_at?: string | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          consented_at?: string | null
+          created_at?: string
+          email?: string
+          promotions_consent?: boolean
+          revoked_at?: string | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      wheel_prizes: {
+        Row: {
+          active: boolean
+          awarded_count: number
+          campaign_key: string
+          created_at: string
+          description: string
+          id: string
+          name: string
+          stock_limit: number | null
+          updated_at: string
+          valid_days: number
+          weight: number
+        }
+        Insert: {
+          active?: boolean
+          awarded_count?: number
+          campaign_key: string
+          created_at?: string
+          description: string
+          id?: string
+          name: string
+          stock_limit?: number | null
+          updated_at?: string
+          valid_days?: number
+          weight: number
+        }
+        Update: {
+          active?: boolean
+          awarded_count?: number
+          campaign_key?: string
+          created_at?: string
+          description?: string
+          id?: string
+          name?: string
+          stock_limit?: number | null
+          updated_at?: string
+          valid_days?: number
+          weight?: number
+        }
+        Relationships: []
+      }
+      wheel_wins: {
+        Row: {
+          campaign_key: string
+          created_at: string
+          email: string
+          expires_at: string
+          id: string
+          prize_description: string
+          prize_id: string
+          prize_name: string
+          redeemed_at: string | null
+          redemption_code: string
+          status: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          campaign_key: string
+          created_at?: string
+          email: string
+          expires_at: string
+          id?: string
+          prize_description: string
+          prize_id: string
+          prize_name: string
+          redeemed_at?: string | null
+          redemption_code: string
+          status?: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          campaign_key?: string
+          created_at?: string
+          email?: string
+          expires_at?: string
+          id?: string
+          prize_description?: string
+          prize_id?: string
+          prize_name?: string
+          redeemed_at?: string | null
+          redemption_code?: string
+          status?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "wheel_wins_prize_id_fkey"
+            columns: ["prize_id"]
+            isOneToOne: false
+            referencedRelation: "wheel_prizes"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      draw_krusty_prize: {
+        Args: { _promotions_consent: boolean }
+        Returns: {
+          already_drawn: boolean
+          expires_at: string
+          prize_description: string
+          prize_name: string
+          redemption_code: string
+          status: string
+        }[]
+      }
     }
     Enums: {
       [_ in never]: never

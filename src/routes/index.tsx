@@ -109,7 +109,7 @@ function Home() {
           </div>
           <img
             src={burgerBig}
-            alt="Panino gigante Hill's servito al tavolo"
+            alt="Una persona tiene con entrambe le mani un grande panino con hamburger, formaggio fuso e cipolle croccanti."
             width={1600}
             height={1200}
             className="toon-box mx-auto mt-10 aspect-[4/3] w-full max-w-xl rounded-lg object-cover"
@@ -201,7 +201,7 @@ function Home() {
         <div className="mx-auto grid max-w-6xl gap-6 px-4 md:grid-cols-2">
           <img
             src={antonio}
-            alt="Antonio, titolare di Hill's Burger & Chips, con un hamburger"
+            alt="Uomo con pizzetto, grembiule e guanti neri tiene un panino con carne e formaggio davanti a sé in cucina."
             loading="lazy"
             width={1200}
             height={1200}
@@ -215,7 +215,7 @@ function Home() {
             </p>
             <img
                src={bigSimpson}
-               alt="Bozza fotografica del Big Simpson, il panino sfida di Hill's"
+               alt="Panino con tre hamburger, formaggio, bacon, salumi, salsicce, lattuga e pomodoro, con patatine fritte su un vassoio."
                loading="lazy"
                width={1600}
                height={1200}
